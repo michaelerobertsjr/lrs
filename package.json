@@ -1,0 +1,38 @@
+{
+  "name": "lrs",
+  "version": "0.0.1",
+  "description": "An xAPI v1.0.1 conformant LRS written in Node with Plugin support so it can be easily extended!",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavidTPate/lrs.git"
+  },
+  "keywords": [
+    "lrs",
+    "xapi",
+    "learning",
+    "record",
+    "store"
+  ],
+  "author": "David Pate <davidtpate@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DavidTPate/lrs/issues"
+  },
+  "homepage": "https://github.com/DavidTPate/lrs#readme",
+  "dependencies": {
+    "good": "^6.x",
+    "good-console": "^5.x",
+    "hapi": "^11.x",
+    "joi": "^7.x"
+  },
+  "devDependencies": {
+    "code": "^2.x",
+    "extend": "^3.0.0",
+    "lab": "^8.x"
+  },
+  "scripts": {
+    "test": "lab -t 100 -a code -L",
+    "test-cov-html": "lab -r html -o coverage.html -a code"
+  }
+}
