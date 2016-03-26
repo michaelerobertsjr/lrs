@@ -3,7 +3,7 @@
 const Hapi = require('hapi');
 const Good = require('good');
 
-const actorSchema = require('../models/actor');
+const ActorSchema = require('../models/actor');
 
 // Create a server with a host and port
 const server = new Hapi.Server();
@@ -23,7 +23,7 @@ server.route({
             query: {
                 statementId: Joi.array().items(Joi.string().guid().required()).single().optional(),
                 voidedStatementId: Joi.array().items(Joi.string().guid().required()).single().optional(),
-                agent: Joi.array().items(actorSchema.required()).optional(), //TODO: This should only support Agents & Identified Groups, not Anonymous Groups
+                agent: Joi.array().items(ActorSchema.required()).optional(), //TODO: This should only support Agents & Identified Groups, not Anonymous Groups
                 verb: Joi.array().items(Joi.string().uri().required()).single().optional(),
                 activity: Joi.array().items(Joi.string().uri().required()).single().optional(),
                 registration: Joi.array().items(Joi.string().guid().required()).single().optional(),

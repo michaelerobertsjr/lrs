@@ -10,9 +10,12 @@
   "keywords": [
     "lrs",
     "xapi",
-    "learning",
-    "record",
-    "store"
+    "learning record store",
+    "experience api",
+    "adl",
+    "adlnet",
+    "tincan",
+    "tincan api"
   ],
   "author": "David Pate <davidtpate@gmail.com>",
   "license": "MIT",
@@ -21,15 +24,18 @@
   },
   "homepage": "https://github.com/DavidTPate/lrs#readme",
   "dependencies": {
-    "good": "^6.x",
-    "good-console": "^5.x",
-    "hapi": "^11.x",
-    "joi": "^7.x"
+    "boom": "3.1.2",
+    "good": "6.6.0",
+    "good-console": "5.3.1",
+    "hapi": "13.2.2",
+    "joi": "8.0.5"
   },
   "devDependencies": {
-    "code": "^2.x",
-    "extend": "^3.0.0",
-    "lab": "^8.x"
+    "code": "2.1.1",
+    "eslint-config-hapi": "9.1.0",
+    "eslint-plugin-hapi": "4.0.0",
+    "extend": "3.0.0",
+    "lab": "10.3.0"
   },
   "scripts": {
     "test": "lab -t 100 -a code -L",
