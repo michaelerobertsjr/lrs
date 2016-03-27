@@ -38,7 +38,7 @@
     "lab": "10.3.0"
   },
   "scripts": {
-    "test": "lab -t 100 -a code -L",
-    "test-cov-html": "lab -r html -o coverage.html -a code"
+    "test": "node --harmony_destructuring ./node_modules/.bin/lab -t 100 -a code -L",
+    "test-cov-html": "node --harmony_destructuring ./node_modules/.bin/lab -r html -o coverage.html -a code"
   }
 }
