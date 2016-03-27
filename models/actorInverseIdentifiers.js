@@ -13,5 +13,5 @@ const inverseIdentifiers = {
 
 module.exports = {
     schema: inverseIdentifiers,
-    inverseIdentifierProperties: ['mbox', 'mbox_sha1sum', 'openid', 'account']
+    inverseIdentifierProperties: Object.keys(inverseIdentifiers)
 };

@@ -1,9 +1,10 @@
 'use strict';
 
+const Joi = require('joi');
 const Hapi = require('hapi');
 const Good = require('good');
 
-const ActorSchema = require('../models/actor');
+const ActorInverseIdentifiers = require('./models/actorInverseIdentifiers').schema;
 
 // Create a server with a host and port
 const server = new Hapi.Server();
@@ -16,14 +17,14 @@ server.route({
     path: '/statements',
     handler: (request, reply) => {
 
-        reply('Hello').code(200);
+        reply('I\'m Hapi').code(200);
     },
     config: {
         validate: {
             query: {
                 statementId: Joi.array().items(Joi.string().guid().required()).single().optional(),
                 voidedStatementId: Joi.array().items(Joi.string().guid().required()).single().optional(),
-                agent: Joi.array().items(ActorSchema.required()).optional(), //TODO: This should only support Agents & Identified Groups, not Anonymous Groups
+                agent: Joi.array().only().single([ActorInverseIdentifiers.mbox, ActorInverseIdentifiers.mbox_sha1sum, ActorInverseIdentifiers.openid, ActorInverseIdentifiers.account]).optional(),
                 verb: Joi.array().items(Joi.string().uri().required()).single().optional(),
                 activity: Joi.array().items(Joi.string().uri().required()).single().optional(),
                 registration: Joi.array().items(Joi.string().guid().required()).single().optional(),
@@ -51,18 +52,26 @@ server.register({
             }
         }]
     }
-}, (err)  => {
+}, (err) => {
 
+    /* $lab:coverage:off$ */
     if (err) {
         throw err; // something bad happened loading the plugin
     }
+    /* $lab:coverage:on$ */
 
     // Start the server
     server.start((err) => {
 
+        /* $lab:coverage:off$ */
         if (err) {
             throw err;
         }
+        /* $lab:coverage:on$ */
         console.log('Server running at:', server.info.uri);
     });
 });
+
+module.exports = {
+    Server: server
+};
